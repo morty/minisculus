@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import unittest
-
 from util import send_answer
 
 class MarkI(object):
@@ -24,22 +22,7 @@ class MarkI(object):
         index = (self.cipher.index(letter) + self.setting) % len(self.cipher)
         return self.cipher[index]
 
-class TestMarkI(unittest.TestCase):
-    def setUp(self):
-        self.mark1 = MarkI(5)
-
-    def testFirstExample(self):
-        self.assertEquals(self.mark1.encode('a'), 'f')
-        self.assertEquals(self.mark1.encode('c'), 'h')
-
-    def testEncodeBang(self):
-        self.assertEquals(self.mark1.encode('!'), '1')
-
-    def testEncodeString(self):
-        self.assertEquals(self.mark1.encode('X7w'), 'cC,')
-
 if __name__ == '__main__':
-    #unittest.main()
     mark1 = MarkI(6)
     encoded = mark1.encode('Strong NE Winds!')
     send_answer(encoded, '/14f7ca5f6ff1a5afb9032aa5e533ad95')
