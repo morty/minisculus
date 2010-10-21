@@ -15,19 +15,26 @@ class MarkI(object):
     def __init__(self, setting):
         self.setting = setting
 
-    def encode(self, letter):
+    def encode(self, message):
+        return "".join(self.encodeLetter(x) for x in message)
+
+    def encodeLetter(self, letter):
         index = (self.cipher.index(letter) + self.setting) % len(self.cipher)
         return self.cipher[index]
 
 class TestMarkI(unittest.TestCase):
+    def setUp(self):
+        self.mark1 = MarkI(5)
+
     def testFirstExample(self):
-        mark1 = MarkI(5)
-        self.assertEquals(mark1.encode('a'), 'f')
-        self.assertEquals(mark1.encode('c'), 'h')
+        self.assertEquals(self.mark1.encode('a'), 'f')
+        self.assertEquals(self.mark1.encode('c'), 'h')
 
     def testEncodeBang(self):
-        mark1 = MarkI(5)
-        self.assertEquals(mark1.encode('!'), '1')
+        self.assertEquals(self.mark1.encode('!'), '1')
+
+    def testEncodeString(self):
+        self.assertEquals(self.mark1.encode('X7w'), 'cC,')
 
 if __name__ == '__main__':
     unittest.main()
