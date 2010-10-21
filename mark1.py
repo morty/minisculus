@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import unittest
-import httplib
-import json
+
+from util import send_answer
 
 class MarkI(object):
     cipher = [
@@ -42,13 +42,4 @@ if __name__ == '__main__':
     #unittest.main()
     mark1 = MarkI(6)
     encoded = mark1.encode('Strong NE Winds!')
-    body = json.dumps({'answer': encoded})
-    headers = {'Accept': 'application/json', 'Content-type': 'application/json'}
-
-    conn = httplib.HTTPConnection('minisculus.edendevelopment.co.uk')
-    conn.request('PUT', '/14f7ca5f6ff1a5afb9032aa5e533ad95', body, headers)
-    resp = conn.getresponse()
-    if resp.status == 303:
-        print "New location = %s" % resp.getheader('location')
-    else:
-        print "Error"
+    send_answer(encoded, '/14f7ca5f6ff1a5afb9032aa5e533ad95')
