@@ -18,7 +18,7 @@ class MarkIV(MarkI):
     def encodeLetter(self, letter):
         partial = self.wheels.encode(letter)
         result = super(MarkIV, self).encodeLetter(partial)
-        self.setting = self.cipher.index(result) * 2
+        self.setting = self.cipher.index(letter) * 2
         return result
 
 if __name__ == '__main__':
