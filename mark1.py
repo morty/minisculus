@@ -22,6 +22,13 @@ class MarkI(object):
         index = (self.cipher.index(letter) + self.setting) % len(self.cipher)
         return self.cipher[index]
 
+    def decode(self, message):
+        return self.decodeLetter(message)
+
+    def decodeLetter(self, letter):
+        index = (self.cipher.index(letter) - self.setting) % len(self.cipher)
+        return self.cipher[index]
+
 if __name__ == '__main__':
     mark1 = MarkI(6)
     encoded = mark1.encode('Strong NE Winds!')

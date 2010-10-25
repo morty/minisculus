@@ -24,6 +24,12 @@ class TestMarkI(unittest.TestCase):
         mark1 = MarkI(6)
         self.assertEquals(mark1.encode('Strong NE Winds!'), 'Yzxutm5TK5cotjy2')
 
+    def testDecodeLetter(self):
+        self.assertEquals(self.mark1.decode('f'), 'a')
+        self.assertEquals(self.mark1.decode('h'), 'c')
+        self.assertEquals(self.mark1.decode('1'), '!')
+        
+
 class TestMarkII(unittest.TestCase):
     def testExample(self):
         mark2 = MarkII(2, 5)
