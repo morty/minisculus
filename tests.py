@@ -4,6 +4,7 @@ import unittest
 
 from mark1 import MarkI
 from mark2 import MarkII
+from mark4 import MarkIV
 
 class TestMarkI(unittest.TestCase):
     def setUp(self):
@@ -26,6 +27,11 @@ class TestMarkII(unittest.TestCase):
         self.assertEquals(mark2.encode('b'), 'T')
         self.assertEquals(mark2.encode('c'), 'U')
         self.assertEquals(mark2.encode('abc'), 'STU')
+
+class TestMarkIV(unittest.TestCase):
+    def testGetSetting(self):
+        mark4 = MarkIV()
+        self.assertEquals(0, mark4.get_setting())
 
 if __name__ == '__main__':
     unittest.main()
