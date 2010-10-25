@@ -12,6 +12,8 @@ def send_answer(answer, destination):
     resp = conn.getresponse()
     if resp.status == 303:
         print "New location = %s" % resp.getheader('location')
+    elif resp.status == 406:
+        print "Wrong answer"
     else:
         print "Error"
 
