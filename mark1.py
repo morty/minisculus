@@ -23,7 +23,7 @@ class MarkI(object):
         return self.cipher[index]
 
     def decode(self, message):
-        return self.decodeLetter(message)
+        return "".join(self.decodeLetter(x) for x in message)
 
     def decodeLetter(self, letter):
         index = (self.cipher.index(letter) - self.setting) % len(self.cipher)

@@ -28,6 +28,9 @@ class TestMarkI(unittest.TestCase):
         self.assertEquals(self.mark1.decode('f'), 'a')
         self.assertEquals(self.mark1.decode('h'), 'c')
         self.assertEquals(self.mark1.decode('1'), '!')
+
+    def testDecodeString(self):
+        self.assertEquals(self.mark1.decode('cC,'), 'X7w')
         
 
 class TestMarkII(unittest.TestCase):
