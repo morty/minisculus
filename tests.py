@@ -30,13 +30,22 @@ class TestMarkII(unittest.TestCase):
 
 class TestMarkIV(unittest.TestCase):
     def setUp(self):
-        self.mark4 = MarkIV()
+        self.mark2 = MarkII(4, 7)
+        self.mark4 = MarkIV(4, 7)
+
     def testGetSetting(self):
         self.assertEquals(0, self.mark4.get_setting())
 
     def testIncrementSetting(self):
         self.mark4.increment_setting(5)
         self.assertEquals(5, self.mark4.get_setting())
+
+    def testInitialEncode(self):
+        message = 'Hello World!'
+
+        self.assertEquals(self.mark4.encode(message), 
+                          self.mark2.encode(message),
+                          "Initial encoding of MarkIV should be the same as the MarkII")
 
 if __name__ == '__main__':
     unittest.main()
