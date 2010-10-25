@@ -11,6 +11,9 @@ class MarkII(object):
     def encode(self, message):
         return self.wheel_2.encode(self.wheel_1.encode(message))
 
+    def decode(self, message):
+        return self.wheel_1.decode(self.wheel_2.decode(message))
+
 if __name__ == '__main__':
     mark2 = MarkII(9, 3)
     encoded = mark2.encode('The Desert Fox will move 30 tanks to Calais at dawn')

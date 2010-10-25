@@ -34,17 +34,25 @@ class TestMarkI(unittest.TestCase):
         
 
 class TestMarkII(unittest.TestCase):
+    def setUp(self):
+        self.mark2 = MarkII(2, 5)
+
     def testExample(self):
-        mark2 = MarkII(2, 5)
-        self.assertEquals(mark2.encode('a'), 'S')
-        self.assertEquals(mark2.encode('b'), 'T')
-        self.assertEquals(mark2.encode('c'), 'U')
-        self.assertEquals(mark2.encode('abc'), 'STU')
+        self.assertEquals(self.mark2.encode('a'), 'S')
+        self.assertEquals(self.mark2.encode('b'), 'T')
+        self.assertEquals(self.mark2.encode('c'), 'U')
+        self.assertEquals(self.mark2.encode('abc'), 'STU')
 
     def testQuestionTwo(self):
         mark2 = MarkII(9, 3)
         self.assertEquals(mark2.encode('The Desert Fox will move 30 tanks to Calais at dawn'),
                           'Wkh2Ghvhuw2Ir.2zloo2pryh2632wdqnv2wr2Fdodlv2dw2gdzq')
+
+    def testDecodeLetter(self):
+        self.assertEquals(self.mark2.decode('S'), 'a')
+        self.assertEquals(self.mark2.decode('T'), 'b')
+        self.assertEquals(self.mark2.decode('U'), 'c')
+        self.assertEquals(self.mark2.decode('STU'), 'abc')
 
 class TestMarkIV(unittest.TestCase):
     def setUp(self):
