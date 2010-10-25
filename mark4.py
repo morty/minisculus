@@ -15,6 +15,12 @@ class MarkIV(MarkI):
         self.setting = self.cipher.index(letter) * 2
         return result
 
+    def decodeLetter(self, letter):
+        partial = super(MarkIV, self).decodeLetter(letter)
+        result = self.wheels.decode(partial)
+        self.setting = self.cipher.index(result) * 2
+        return result
+
 if __name__ == '__main__':
     mark4 = MarkIV(4, 7)
     encoded = mark4.encode('The white cliffs of Alghero are visible at night')

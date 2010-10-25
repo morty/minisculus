@@ -73,5 +73,9 @@ class TestMarkIV(unittest.TestCase):
         self.assertEquals(self.mark4.encode('The white cliffs of Alghero are visible at night'),
                           'JMl0kBp?20QixoivSc.2"vvmls8KOk"0jA,4kgt0OmUb,pm.')
 
+    def testDecodeString(self):
+        self.assertEquals(self.mark4.decode('JMl0kBp?20QixoivSc.2"vvmls8KOk"0jA,4kgt0OmUb,pm.'), 
+                                            'The white cliffs of Alghero are visible at night')
+
 if __name__ == '__main__':
     unittest.main()
