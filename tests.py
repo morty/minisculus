@@ -33,5 +33,10 @@ class TestMarkIV(unittest.TestCase):
         mark4 = MarkIV()
         self.assertEquals(0, mark4.get_setting())
 
+    def testIncrementSetting(self):
+        mark4 = MarkIV()
+        mark4.increment_setting(5)
+        self.assertEquals(5, mark4.get_setting())
+
 if __name__ == '__main__':
     unittest.main()
