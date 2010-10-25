@@ -41,11 +41,14 @@ class TestMarkIV(unittest.TestCase):
         self.assertEquals(5, self.mark4.get_setting())
 
     def testInitialEncode(self):
-        message = 'Hello World!'
-
-        self.assertEquals(self.mark4.encode(message), 
-                          self.mark2.encode(message),
+        self.assertEquals(self.mark4.encode('H'), 
+                          self.mark2.encode('H'),
                           "Initial encoding of MarkIV should be the same as the MarkII")
+
+    def testSecondEncode(self):
+        self.assertNotEquals(self.mark4.encode('HE'), 
+                             self.mark2.encode('HE'),
+                             "Second encoding of MarkIV should be different from the MarkII")
 
 if __name__ == '__main__':
     unittest.main()
