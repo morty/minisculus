@@ -20,6 +20,10 @@ class TestMarkI(unittest.TestCase):
     def testEncodeString(self):
         self.assertEquals(self.mark1.encode('X7w'), 'cC,')
 
+    def testQuestionOne(self):
+        mark1 = MarkI(6)
+        self.assertEquals(mark1.encode('Strong NE Winds!'), 'Yzxutm5TK5cotjy2')
+
 class TestMarkII(unittest.TestCase):
     def testExample(self):
         mark2 = MarkII(2, 5)
@@ -27,6 +31,11 @@ class TestMarkII(unittest.TestCase):
         self.assertEquals(mark2.encode('b'), 'T')
         self.assertEquals(mark2.encode('c'), 'U')
         self.assertEquals(mark2.encode('abc'), 'STU')
+
+    def testQuestionTwo(self):
+        mark2 = MarkII(9, 3)
+        self.assertEquals(mark2.encode('The Desert Fox will move 30 tanks to Calais at dawn'),
+                          'Wkh2Ghvhuw2Ir.2zloo2pryh2632wdqnv2wr2Fdodlv2dw2gdzq')
 
 class TestMarkIV(unittest.TestCase):
     def setUp(self):
@@ -42,6 +51,10 @@ class TestMarkIV(unittest.TestCase):
         self.assertNotEquals(self.mark4.encode('HE'), 
                              self.mark2.encode('HE'),
                              "Second encoding of MarkIV should be different from the MarkII")
+
+    def testQuestionThree(self):
+        self.assertEquals(self.mark4.encode('The white cliffs of Alghero are visible at night'),
+                          'JMl0kBp?20QixoivSc.2"vvmls8KOk"0jA,4kgt0OmUb,pm.')
 
 if __name__ == '__main__':
     unittest.main()
